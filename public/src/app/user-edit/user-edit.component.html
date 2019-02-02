@@ -1,0 +1,149 @@
+<div class="container">
+
+    <div class="border border-white rounded p-4">
+
+        <div class="text-center">
+            <h5>User Profile</h5>
+        </div>
+
+        <div class="border border-white p-3">
+    
+            <form #userEditForm="ngForm">
+                <!-- <p> {{ userEdit | json }} </p> -->
+
+                <div class="mt-2">
+                    <p *ngIf="userEditError" style="color:red"> {{ userEditError }} </p>
+                </div>
+
+                <div class="form-group">
+                    <label for="userEditEmail">Email Address</label>
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="userEditEmail" 
+                      name="userEditEmail" 
+                      placeholder="Email Address"
+                      autofocus
+                      [(ngModel)]="userEdit.email"
+                      #userEditEmail="ngModel"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="userEditFirstName">First Name</label>
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="userEditFirstName" 
+                      name="userEditFirstName" 
+                      placeholder="First Name"
+                      [(ngModel)]="userEdit.firstname"
+                      #userEditFirstName="ngModel"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="userEditLastName">Last Name</label>
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="userEditLastName" 
+                      name="userEditLastName" 
+                      placeholder="Last Name"
+                      [(ngModel)]="userEdit.lastname"
+                      #userEditLastName="ngModel"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="userEditCity">City</label>
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="userEditCity" 
+                      name="userEditCity" 
+                      placeholder="City"
+                      [(ngModel)]="userEdit.city"
+                      #userEditCity="ngModel"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="userEditConfirmState">State</label>
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="userEditState" 
+                      name="userEditState" 
+                      placeholder="State"
+                      [(ngModel)]="userEdit.state"
+                      #userEditState="ngModel"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="userEditConfirmCountry">Country</label>
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="userEditCountry" 
+                      name="userEditCountry" 
+                      placeholder="Country"
+                      [(ngModel)]="userEdit.country"
+                      #userEditCountry="ngModel"
+                    >
+                </div>
+
+                <div>
+                    <div class="form-group ml-4 mr-4 inline-block-top">
+                        <input 
+                            type="checkbox" 
+                            class="form-check-input" 
+                            id="userEditIsActive"
+                            name="userEditIsActive"
+                            [disabled]="!isOkToEditIsActive"
+                            [(ngModel)]="userEdit.isactive"
+                            #userEditIsActive="ngModel"
+                        >
+                        <label for="userEditIsActive">Active</label>
+                    </div>
+
+                    <div class="form-group ml-4 inline-block-top">
+                        <input 
+                            type="checkbox" 
+                            class="form-check-input" 
+                            id="userEditIsAdministrator"
+                            name="userEditIsAdministrator"
+                            [disabled]="!isOkToEditIsAdministrator"
+                            [(ngModel)]="userEdit.isadministrator"
+                            #userEditIsActive="ngModel"
+                        >
+                        <label for="userEditIsAdministrator">Administrator</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <button
+                            (click)="onClickUpdateUser()"
+                            type="submit" 
+                            class="btn btn-primary btn-sm btn-block"
+                            [disabled]="!userEditForm.valid"
+                        >Save</button>
+                    </div>
+                    <div class="col-sm">
+                        <button 
+                            [routerLink]="['/user-list']" 
+                            type="button" 
+                            class="btn btn-secondary btn-sm btn-block"
+                        >Close</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    <div>
+</div>
+        
+    

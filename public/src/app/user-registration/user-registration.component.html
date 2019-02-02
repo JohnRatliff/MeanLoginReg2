@@ -1,0 +1,118 @@
+<div class="container">
+
+    <div class="border border-white rounded p-4">
+
+        <div>
+            <div class="inline-block-top">
+                <h5>Register</h5>
+            </div>
+            <div class="inline-block-top float-right">
+                <button [routerLink]="['/user-login']" class="btn btn-link btn-underline">Login</button>
+            </div>
+        </div>
+
+        <div class="border border-white p-3">
+    
+            <form #userRegistrationForm="ngForm">
+                <!-- <p> {{ userRegistration | json }} </p> -->
+
+                <div class="form-group">
+                    <!-- <label for="userRegistrationEmail">Email Address</label> -->
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="userRegistrationEmail" 
+                      name="userRegistrationEmail" 
+                      placeholder="Email Address"
+                      autofocus
+                      [(ngModel)]="userRegistration.email"
+                      #userRegistrationEmail="ngModel"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <!-- <label for="userRegistrationFirstName">First Name</label> -->
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="userRegistrationFirstName" 
+                      name="userRegistrationFirstName" 
+                      placeholder="First Name"
+                      [(ngModel)]="userRegistration.firstname"
+                      #userRegistrationEmail="ngModel"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <!-- <label for="userRegistrationLastName">Last Name</label> -->
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="userRegistrationLastName" 
+                      name="userRegistrationLastName" 
+                      placeholder="Last Name"
+                      [(ngModel)]="userRegistration.lastname"
+                      #userRegistrationEmail="ngModel"
+                    >
+                </div>
+
+                <!--
+                <div class="form-group">
+                    <label for="userRegistrationBirthDate">Birth Date</label>
+                    <input 
+                      type="date" 
+                      class="form-control" 
+                      id="userRegistrationBirthDate" 
+                      name="userRegistrationBirthDate" 
+                      placeholder="Birth Date (mm/dd/yyyy)"
+                      [(ngModel)]="userRegistration.birthdate"
+                      #userRegistrationEmail="ngModel"
+                    >
+                </div>
+                -->
+
+                <div class="form-group">
+                    <!-- <label for="userRegistrationPassword">Password</label> -->
+                    <input 
+                      type="password" 
+                      class="form-control" 
+                      id="userRegistrationPassword" 
+                      name="userRegistrationPassword" 
+                      placeholder="Password"
+                      [(ngModel)]="userRegistration.password"
+                      #userRegistrationEmail="ngModel"
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <!-- <label for="userRegistrationConfirmPassword">Confirm Password</label> -->
+                    <input 
+                      type="password" 
+                      class="form-control" 
+                      id="userRegistrationConfirmPassword" 
+                      name="userRegistrationConfirmPassword" 
+                      placeholder="Confirm Password"
+                      [(ngModel)]="userRegistration.confirmpassword"
+                      #userRegistrationEmail="ngModel"
+                    >
+                </div>
+
+                <div class="mt-1">
+                    <button
+                      (click)="onClickRegister()"
+                      type="submit" 
+                      class="btn btn-primary btn-sm btn-block"
+                      [disabled]="!userRegistrationForm.valid"
+                    >Register</button>
+                </div>
+
+                <div class="mt-2">
+                    <p *ngIf="userRegistrationError" style="color:red"> {{ userRegistrationError }} </p>
+                </div>
+            </form>
+
+        </div>
+    <div>
+</div>
+    

@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.container {
+    background-color: #004642;
+    color: white;
+
+    min-height: 800px;
+    widows: 100%;
+    
+}
+
+.inline-block-top {
+    display: inline-block;
+    vertical-align: top;
+}

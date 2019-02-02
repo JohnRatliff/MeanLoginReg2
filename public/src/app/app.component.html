@@ -1,0 +1,42 @@
+<div class="container p-2">
+    <h3 class="text-center pt-2">L & R +</h3>
+
+    <div class="row">
+        <div class="col">
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-link btn-underline" id="dropdownMenu" ngbDropdownToggle>Menu</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownMenu">
+                    <button class="dropdown-item" [routerLink]="['/home']">Home</button>
+                    <button *ngIf="_httpService.userIsLoggedIn" class="dropdown-item" [routerLink]="['/user-list']">Users</button>
+                    <button *ngIf="_httpService.userIsLoggedIn" class="dropdown-item" [routerLink]="['/weather']">Current Weather</button>
+                    <button *ngIf="_httpService.userIsLoggedIn" class="dropdown-item" [routerLink]="['/google-map', 'static']">Static Google Map</button>
+                    <button *ngIf="_httpService.userIsLoggedIn" class="dropdown-item" [routerLink]="['/google-map', 'embedded']">Embedded Google Map</button>
+                    <button *ngIf="_httpService.userIsAdministrator" class="dropdown-item" [routerLink]="['/user-test-data']">Generate Test Logins</button>
+                </div>
+            </div>
+        </div>
+         
+        <div class="col text-right">
+            <div *ngIf="!_httpService.userIsLoggedIn" ngbDropdown placement="bottom-right" class="d-inline-block">
+                <button class="btn btn-link btn-underline" id="dropdownSignIn" ngbDropdownToggle>Sign In</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownSignIn">
+                    <button class="dropdown-item text-right" [routerLink]="['/user-login']">Login</button>
+                    <button class="dropdown-item text-right" [routerLink]="['/user-registration']">Register</button>
+               </div>
+            </div>
+
+            <div *ngIf="_httpService.userIsLoggedIn" ngbDropdown placement="bottom-right" class="d-inline-block">
+                <button class="btn btn-link btn-underline" id="dropdownUser" ngbDropdownToggle>Hi {{ _httpService.userFirstName }}!</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownUser">
+                    <button class="dropdown-item text-right" [routerLink]="['/user-logout']">Logout</button>
+                    <button class="dropdown-item text-right" [routerLink]="['/user-edit-password']">Change Password</button>
+                    <button class="dropdown-item text-right" [routerLink]="['/user-profile']">Edit Profile</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <router-outlet></router-outlet>
+
+</div>
+

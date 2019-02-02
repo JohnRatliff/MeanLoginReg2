@@ -1,0 +1,48 @@
+<div class="container">
+
+    <div class="border border-white rounded p-4">
+        <div class="text-center">
+            <h5>User List</h5>
+        </div>
+    
+        <!-- Users Table: Begins -->
+        <div class="responsive tbl-scroll">
+            <table class="table table-bordered table-striped table-hover table-condensed table-fixed">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width:80%">Email Address/Name</th>
+                        <th scope="col" class="text-center" style="width:20%">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{ user.email }}
+                            <br>
+                            {{ user.firstname }}, {{ user.lastname }}
+                            <br>
+                            {{ user.city }}, {{ user.state }} {{ user.country }}
+                        </td>
+                        <td class="text-center">
+                            <a 
+                                [routerLink]="['/user-view', user._id]"
+                                class="d-block"
+                            ><u>View</u></a>
+                            <a 
+                                *ngIf="_httpService.userIsAdministrator"
+                                [routerLink]="['/user-edit', user._id]" 
+                                class="d-block"
+                            ><u>Edit</u></a>
+                            <a 
+                                *ngIf="user._id != _httpService.userId && _httpService.userIsAdministrator"
+                                class="d-block"
+                                (click)="onClickDeleteUser(user._id)" 
+                            ><u>Delete</u></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Products Table: Ends -->
+
+    <div>
+</div>
